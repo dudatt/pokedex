@@ -1,24 +1,12 @@
 package com.example.pokedex
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.databinding.DataBindingUtil
 import com.example.pokedex.databinding.ActivityMainBinding
 import com.example.pokedex.recyclerview.PokemonListAdapter
-import com.example.pokedex.ui.theme.PokedexTheme
 
 class MainActivity : ComponentActivity() {
     lateinit var binding: ActivityMainBinding
@@ -35,12 +23,30 @@ class MainActivity : ComponentActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val pokemonList = listOf(
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png","Charmander", "N° 004", "Fire", "None"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+            PokemonList("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png","Bulbasaur", "N° 001", "Grass", "Poison"),
+
+            )
+
         val adapter = PokemonListAdapter(
             context = this,
-            pokemon = List(20) {
-                "$it"
-            }
+            pokemon = pokemonList
         )
+
+        //val adapter = PokemonListAdapter(
+        //   context = this,
+        // pokemon = List(20) {
+        //   }
+        //)
         binding.rvPokemon.adapter = adapter
     }
 }
