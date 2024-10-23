@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">pokedex</string>
     <string name="pokemon_image">Pokemon Image</string>
+    <string name="confirm">Confirm</string>
+    <string name="dont_have_an_account">Don\'t have an account yet?</string>
+    <string name="password">Password</string>
+    <string name="e_mail">E-mail</string>
+    <string name="login">Log in</string>
+    <string name="email">Email\n</string>
+    <string name="sing_up">Sing up</string>
+    <string name="user">Username</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="alredy_have_an_account">Alredy have an account?</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
