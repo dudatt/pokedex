@@ -1,7 +1,7 @@
 package com.example.pokedex
 
-class PokemonList(
-    val Image: String,
+data class Pokemon(
+    val ImageUrl: String,
     val name: String,
     val number: String,
     val type01: String,

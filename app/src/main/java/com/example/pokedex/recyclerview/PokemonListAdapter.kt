@@ -2,26 +2,22 @@ package com.example.pokedex.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedex.PokemonList
-import com.example.pokedex.R
+import com.example.pokedex.Pokemon
+import com.example.pokedex.Singleton
 import com.example.pokedex.databinding.PokemonItemBinding
 
 class PokemonListAdapter(
-    private val context: Context,
-    private val pokemon: List<PokemonList> // acesso a cada um dos itens(cards)
-) :
-    RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
+    //private val context: Context,
+    //private val pokemon: List<Pokemon>
+) : RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
 
-    class ViewHolder(private val pokemonListBinding: PokemonItemBinding) :
+    inner class ViewHolder(private val pokemonListBinding: PokemonItemBinding) :
         RecyclerView.ViewHolder(pokemonListBinding.root) {
 
-        fun bind(pokemon: PokemonList) {
-            //pokemonListBinding.ivPokemon = pokemon.image
+        fun bind(pokemon: Pokemon) {
+            //pokemonListBinding.ivPokemon.text = pokemon.ImageUrl
             pokemonListBinding.tvName.text = pokemon.name
             pokemonListBinding.tvNumber.text = pokemon.number
             pokemonListBinding.tvType01.text = pokemon.type01
@@ -29,19 +25,16 @@ class PokemonListAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
-            ViewHolder = ViewHolder(
-        PokemonItemBinding.inflate(
-            LayoutInflater.from(context),
-            parent,
-            false
-        )
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val pokemonListBinding = PokemonItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(pokemonListBinding)
+    }
 
-    override fun getItemCount(): Int = pokemon.size
+    override fun getItemCount() = Singleton.pokemonList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pokemon = pokemon[position]
-        holder.bind(pokemon)
+        Singleton.pokemonList[position].let {
+            holder.bind(it)
+        }
     }
 }
