@@ -1,11 +1,9 @@
 package com.example.pokedex.recyclerview
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.Pokemon
-import com.example.pokedex.Singleton
 import com.example.pokedex.databinding.PokemonItemBinding
 
 class PokemonListAdapter(
