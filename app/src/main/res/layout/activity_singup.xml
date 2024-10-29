@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -153,7 +154,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/loginbtn"
+            android:id="@+id/logibtn"
             android:layout_width="73dp"
             android:layout_height="28dp"
             android:background="@null"
@@ -171,3 +172,4 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/charmander" />
 </RelativeLayout>
+</layout>
