@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     annotationProcessor(libs.androidx.room.compiler)

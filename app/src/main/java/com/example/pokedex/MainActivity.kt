@@ -1,5 +1,6 @@
 package com.example.pokedex
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -24,6 +25,7 @@ class MainActivity : ComponentActivity() {
         binding.rvPokemon.layoutManager = GridLayoutManager(this, 2)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(
