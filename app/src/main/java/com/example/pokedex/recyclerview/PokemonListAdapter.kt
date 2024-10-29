@@ -1,5 +1,6 @@
 package com.example.pokedex.recyclerview
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,8 +8,8 @@ import com.example.pokedex.Pokemon
 import com.example.pokedex.databinding.PokemonItemBinding
 
 class PokemonListAdapter(
-    //private val context: Context,
-    //private val pokemon: List<Pokemon>
+    private val context: Context,
+    private val pokemon: List<Pokemon>
 ) : RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val pokemonListBinding: PokemonItemBinding) :
@@ -28,11 +29,12 @@ class PokemonListAdapter(
         return ViewHolder(pokemonListBinding)
     }
 
-    override fun getItemCount() = Singleton.pokemonList.size
+    override fun getItemCount(): Int = pokemon.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Singleton.pokemonList[position].let {
-            holder.bind(it)
-        }
+        val pokemon = pokemon[position]
+        holder.bind(pokemon)
+
     }
+
 }
