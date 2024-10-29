@@ -1,48 +1,49 @@
 package com.example.pokedex
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.pokedex.Pokemon
 import com.example.pokedex.databinding.ActivityMainBinding
 import com.example.pokedex.recyclerview.PokemonListAdapter
 
 class MainActivity : ComponentActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: PokemonListAdapter
+    private val pokemonList = listOf(
+        Pokemon("@drawable/charmander", "001", "Charmander", "Fire", "Fire"),
+        Pokemon("@drawable/charizard", "002", "Charizard", "Fire", "Fire"),
+        Pokemon("@drawable/squirtle", "003", "Squirtle", "Water", "Water"),
+        Pokemon("@drawable/wartortle", "004", "Wartortle", "Water", "Water")
+        // Adicione mais Pokémon conforme necessário
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
-
         setContentView(binding.root)
 
-        //binding.rvPokemon.adapter = PokemonListAdapter()
+        // Configura o RecyclerView
         binding.rvPokemon.layoutManager = GridLayoutManager(this, 2)
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
-            val systemBars = insets.getInsets(
-                WindowInsetsCompat.Type.systemBars()
-            )
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        val adapter = PokemonListAdapter(
-            context = this,
-            pokemon = List(20) {
-                Pokemon("@drawable/charmander", "001", "Charmander", "Fire", "Fire")
-                Pokemon("@drawable/charizard", "002", "Charizard", "Fire", "Fire")
-                Pokemon("@drawable/squirtle", "003", "Squirtle", "Water", "Water")
-                Pokemon("@drawable/wartortle", "004", "Wartortle", "Water", "Water")
-            }
-        )
+        adapter = PokemonListAdapter(this, pokemonList)
         binding.rvPokemon.adapter = adapter
+
+        // Configura o SearchView para filtrar a lista
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterPokemonList(newText.orEmpty())
+                return true
+            }
+        })
+    }
+
+    // Função para filtrar a lista de Pokémon pelo nome
+    private fun filterPokemonList(query: String) {
+        val filteredList = pokemonList.filter { it.name.contains(query, ignoreCase = true) }
+        adapter.updateList(filteredList)
     }
 }

@@ -9,7 +9,7 @@ import com.example.pokedex.databinding.PokemonItemBinding
 
 class PokemonListAdapter(
     private val context: Context,
-    private val pokemon: List<Pokemon>
+    private var pokemon: List<Pokemon> // alterado para 'var' para permitir atualização da lista
 ) : RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val pokemonListBinding: PokemonItemBinding) :
@@ -34,7 +34,11 @@ class PokemonListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pokemon = pokemon[position]
         holder.bind(pokemon)
-
     }
 
+    // Função para atualizar a lista de Pokémon e notificar o RecyclerView
+    fun updateList(filteredList: List<Pokemon>) {
+        pokemon = filteredList
+        notifyDataSetChanged() // Atualiza o RecyclerView com a nova lista
+    }
 }
