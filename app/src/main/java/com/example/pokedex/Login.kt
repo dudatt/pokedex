@@ -16,6 +16,11 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
+        binding.confirmButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.singupbtn.setOnClickListener {
             val intent = Intent(this, Singup::class.java)
             startActivity(intent)

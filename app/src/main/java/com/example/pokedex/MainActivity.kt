@@ -46,15 +46,6 @@ class MainActivity : ComponentActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //val adapter = PokemonListAdapter(
-        //    context = this,
-        //    pokemon = List(20) {
-        //        Pokemon("@drawable/charmander", "001", "Charmander", "Fire", "Fire")
-        //        Pokemon("@drawable/charizard", "002", "Charizard", "Fire", "Fire")
-        //        Pokemon("@drawable/squirtle", "003", "Squirtle", "Water", "Water")
-        //        Pokemon("@drawable/wartortle", "004", "Wartortle", "Water", "Water")
-        //    }
-        //)
-        //binding.rvPokemon.adapter = adapter
+
     }
 }
