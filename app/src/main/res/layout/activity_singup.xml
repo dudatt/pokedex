@@ -201,7 +201,7 @@
         android:layout_height="104dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/gymsymbol"
+        android:src="@drawable/gym_symbol"
         android:layout_margin="5dp"/>
 </RelativeLayout>
 </layout>
