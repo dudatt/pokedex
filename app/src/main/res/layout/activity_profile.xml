@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile">
+    tools:context=".Profile">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,19 +29,6 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_toEndOf="@id/back_icon"/>
-
-        <TextView
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/edit"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:paddingEnd="8dp"/>
     </RelativeLayout>
 
     <LinearLayout
