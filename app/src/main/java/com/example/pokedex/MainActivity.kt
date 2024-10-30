@@ -21,19 +21,8 @@ class MainActivity : ComponentActivity() {
 
         setContentView(binding.root)
 
-        //binding.rvPokemon.adapter = PokemonListAdapter()
+        // Configurando o RecyclerView
         binding.rvPokemon.layoutManager = GridLayoutManager(this, 2)
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
-            val systemBars = insets.getInsets(
-                WindowInsetsCompat.Type.systemBars()
-            )
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         val adapter = PokemonListAdapter(
             context = this,
             pokemon = List(20) {
@@ -44,5 +33,19 @@ class MainActivity : ComponentActivity() {
             }
         )
         binding.rvPokemon.adapter = adapter
+
+
+        binding.perfilclick.setOnClickListener {
+
+            val intent = Intent(this, Profile::class.java)
+            startActivity(intent)
+        }
+
+       
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
     }
 }

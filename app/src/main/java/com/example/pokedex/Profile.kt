@@ -11,10 +11,12 @@ import com.example.pokedex.databinding.ActivityProfileBinding
 
 class Profile : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
+
         binding.backIcon.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

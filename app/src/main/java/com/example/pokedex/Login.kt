@@ -2,28 +2,43 @@ package com.example.pokedex
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.databinding.DataBindingUtil
-import com.example.pokedex.databinding.ActivityLoginBinding
+import com.example.pokedex.database.DatabaseHelper
 
 class Login : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var dbHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        setContentView(R.layout.activity_login)
 
-        binding.singupbtn.setOnClickListener {
-            val intent = Intent(this, Singup::class.java)
-            startActivity(intent)
+        dbHelper = DatabaseHelper(this)
+
+        val emailEditText = findViewById<EditText>(R.id.editTextTextEmailAddress)
+        val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword)
+        val confirmButton = findViewById<Button>(R.id.confirm_button)
+
+        confirmButton.setOnClickListener {
+            val email = emailEditText.text.toString()
+            val password = passwordEditText.text.toString()
+
+            // Verifica se o usuário existe
+            if (dbHelper.checkUser(email, password)) {
+                // Acesso permitido, iniciar nova Activity
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish() // Fecha a activity de login
+            } else {
+                Toast.makeText(this, "Email ou senha inválidos", Toast.LENGTH_SHORT).show()
+            }
         }
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dbHelper.closeDatabase() // Fecha o banco de dados quando a Activity for destruída
     }
 }
