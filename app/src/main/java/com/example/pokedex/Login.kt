@@ -25,12 +25,10 @@ class Login : AppCompatActivity() {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            // Verifica se o usuário existe
             if (dbHelper.checkUser(email, password)) {
-                // Acesso permitido, iniciar nova Activity
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish() // Fecha a activity de login
+                finish()
             } else {
                 Toast.makeText(this, "Email ou senha inválidos", Toast.LENGTH_SHORT).show()
             }
