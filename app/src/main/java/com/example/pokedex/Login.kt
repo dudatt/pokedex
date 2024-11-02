@@ -7,13 +7,21 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pokedex.database.DatabaseHelper
+import androidx.databinding.DataBindingUtil
+import com.example.pokedex.databinding.ActivityLoginBinding
 
 class Login : AppCompatActivity() {
     private lateinit var dbHelper: DatabaseHelper
+    lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        binding.singupbtn.setOnClickListener {
+            intent = Intent(this, Singup::class.java)
+            startActivity(intent)
+        }
 
         dbHelper = DatabaseHelper(this)
 

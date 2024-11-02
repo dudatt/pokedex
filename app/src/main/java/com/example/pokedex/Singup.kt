@@ -13,6 +13,10 @@ class Singup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_singup)
 
+        binding.logibtn.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
         binding.SingUp.setOnClickListener {
             addUser()
         }
