@@ -7,7 +7,15 @@ data class SinglePokemonResponse(
     @SerializedName("height") val height: Int? = null,
     @SerializedName("weight") val weight: Int? = null,
     @SerializedName("id") val id: Int? = null,
-    @SerializedName("types") val types: List<SlotType>
+    @SerializedName("types") val types: List<SlotType>,
+    @SerializedName("sprites") val sprites: Sprites
+)
+
+data class Sprites(
+    @SerializedName("front_default") val front_default: String? = null,
+    @SerializedName("back_default") val back_default: String? = null,
+    @SerializedName("front_shiny") val front_shiny: String? = null,
+    @SerializedName("back_shiny") val back_shiny: String? = null,
 )
 
 data class SlotType(

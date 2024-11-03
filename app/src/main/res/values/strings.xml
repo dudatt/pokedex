@@ -18,4 +18,5 @@
     <string name="edit"><u>Edit</u></string>
     <string name="date_mask">XX/XX/XXXX</string>
     <string name="passwor_mask">********</string>
+    <string name="see_your_favorites">See your favorites!</string>
 </resources>
