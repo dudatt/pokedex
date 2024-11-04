@@ -6,19 +6,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivPokemon"
@@ -32,59 +29,59 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#919191"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivPokemon"
+            tools:text="N° 001" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#313131"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNumber"
+            tools:text="Charmander" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName">
+
             <TextView
-                android:id="@+id/tvNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#919191"
+                android:id="@+id/tvType01"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:background="#fd7d24"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivPokemon"
-                tools:text="N° 001" />
+                tools:text="Fire" />
 
             <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvType02"
+                android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                android:textColor="#313131"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNumber"
-                tools:text="Charmander" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvName">
-
-                <TextView
-                    android:id="@+id/tvType01"
-                    android:layout_width="64dp"
-                    android:layout_height="match_parent"
-                    android:background="#fd7d24"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    tools:text="Fire" />
-
-                <TextView
-                    android:id="@+id/tvType02"
-                    android:layout_width="64dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="#fd7d24"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    tools:text="Fire" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginStart="10dp"
+                android:background="#fd7d24"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                tools:text="Fire" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-</layout>
+    </layout>
